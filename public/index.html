@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sensor Alignment Tool</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo-block">
+        <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>
+          <path d="M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"/>
+        </svg>
+        <div>
+          <div class="app-title">Sensor Alignment Tool</div>
+          <div class="app-sub">Alignment Table Package Generator · v1.0</div>
+        </div>
+      </div>
+      <div class="header-badge">DEB BUILDER</div>
+    </div>
+  </header>
+
+  <main>
+    <form id="align-form" autocomplete="off">
+
+      <!-- ── Package Info ── -->
+      <section class="card">
+        <div class="card-title">
+          <span class="card-num">01</span>
+          Package Information
+        </div>
+        <div class="meta-grid">
+          <div class="field">
+            <label for="tableVersion">Table Version</label>
+            <input id="tableVersion" type="text" placeholder="e.g. 1.0.0" required />
+            <span class="hint">Upstream version (digits and dots)</span>
+          </div>
+          <div class="field">
+            <label for="tailNumber">Tail Number</label>
+            <input id="tailNumber" type="text" placeholder="e.g. N12345" required />
+            <span class="hint">Aircraft tail / registration</span>
+          </div>
+          <div class="field">
+            <label>Package Version</label>
+            <div class="pkg-version-display" id="pkg-version">—</div>
+            <span class="hint">Auto-generated from above</span>
+          </div>
+          <div class="field">
+            <label>Install Path</label>
+            <div class="install-path">/HD0/SW/Align/alignment.json</div>
+            <span class="hint">Fixed destination on target system</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Sensors ── -->
+      <section class="card">
+        <div class="card-title">
+          <span class="card-num">02</span>
+          Sensors
+          <span class="count-badge">4</span>
+        </div>
+        <div class="align-table">
+          <div class="align-thead">
+            <div class="col-label"></div>
+            <div class="col-val">Yaw (°)</div>
+            <div class="col-val">Pitch (°)</div>
+            <div class="col-val">Roll (°)</div>
+          </div>
+          <div class="align-row" data-group="sensor" data-idx="0">
+            <div class="col-label"><span class="row-tag">S1</span> Sensor 1</div>
+            <div class="col-val"><input type="number" step="any" name="s0-yaw"   class="num" placeholder="0.000" /></div>
+            <div class="col-val"><input type="number" step="any" name="s0-pitch" class="num" placeholder="0.000" /></div>
+            <div class="col-val"><input type="number" step="any" name="s0-roll"  class="num" placeholder="0.000" /></div>
+          </div>
+          <div class="align-row" data-group="sensor" data-idx="1">
+            <div class="col-label"><span class="row-tag">S2</span> Sensor 2</div>
+            <div class="col-val"><input type="number" step="any" name="s1-yaw"   class="num" placeholder="0.000" /></div>
+            <div class="col-val"><input type="number" step="any" name="s1-pitch" class="num" placeholder="0.000" /></div>
+            <div class="col-val"><input type="number" step="any" name="s1-roll"  class="num" placeholder="0.000" /></div>
+          </div>
+          <div class="align-row" data-group="sensor" data-idx="2">
+            <div class="col-label"><span class="row-tag">S3</span> Sensor 3</div>
+            <div class="col-val"><input type="number" step="any" name="s2-yaw"   class="num" placeholder="0.000" /></div>
+            <div class="col-val"><input type="number" step="any" name="s2-pitch" class="num" placeholder="0.000" /></div>
+            <div class="col-val"><input type="number" step="any" name="s2-roll"  class="num" placeholder="0.000" /></div>
+          </div>
+          <div class="align-row" data-group="sensor" data-idx="3">
+            <div class="col-label"><span class="row-tag">S4</span> Sensor 4</div>
+            <div class="col-val"><input type="number" step="any" name="s3-yaw"   class="num" placeholder="0.000" /></div>
+            <div class="col-val"><input type="number" step="any" name="s3-pitch" class="num" placeholder="0.000" /></div>
+            <div class="col-val"><input type="number" step="any" name="s3-roll"  class="num" placeholder="0.000" /></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Turrets ── -->
+      <section class="card">
+        <div class="card-title">
+          <span class="card-num">03</span>
+          Turrets
+          <span class="count-badge">2</span>
+        </div>
+        <div class="align-table">
+          <div class="align-thead">
+            <div class="col-label"></div>
+            <div class="col-val">Yaw (°)</div>
+            <div class="col-val">Pitch (°)</div>
+            <div class="col-val">Roll (°)</div>
+          </div>
+          <div class="align-row" data-group="turret" data-idx="0">
+            <div class="col-label"><span class="row-tag t">T1</span> Turret 1</div>
+            <div class="col-val"><input type="number" step="any" name="t0-yaw"   class="num" placeholder="0.000" /></div>
+            <div class="col-val"><input type="number" step="any" name="t0-pitch" class="num" placeholder="0.000" /></div>
+            <div class="col-val"><input type="number" step="any" name="t0-roll"  class="num" placeholder="0.000" /></div>
+          </div>
+          <div class="align-row" data-group="turret" data-idx="1">
+            <div class="col-label"><span class="row-tag t">T2</span> Turret 2</div>
+            <div class="col-val"><input type="number" step="any" name="t1-yaw"   class="num" placeholder="0.000" /></div>
+            <div class="col-val"><input type="number" step="any" name="t1-pitch" class="num" placeholder="0.000" /></div>
+            <div class="col-val"><input type="number" step="any" name="t1-roll"  class="num" placeholder="0.000" /></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Actions ── -->
+      <div class="actions-bar">
+        <div id="status-msg" class="status-msg"></div>
+        <div class="btn-group">
+          <button type="button" id="preview-btn" class="btn-secondary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+            </svg>
+            Preview JSON
+          </button>
+          <button type="submit" id="generate-btn" class="btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Generate .deb Package
+          </button>
+        </div>
+      </div>
+
+    </form>
+
+    <!-- ── JSON Preview Panel ── -->
+    <div id="preview-panel" class="card preview-panel hidden">
+      <div class="preview-header">
+        <div class="card-title" style="margin:0">
+          <span class="card-num">↳</span>
+          JSON Preview
+          <span id="preview-filename" class="filename-tag"></span>
+        </div>
+        <button id="close-preview" class="close-btn" title="Close">✕</button>
+      </div>
+      <pre id="json-output"></pre>
+    </div>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
