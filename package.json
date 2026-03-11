@@ -2,11 +2,42 @@
   "name": "sensor-align-tool",
   "version": "1.0.0",
   "type": "module",
+  "main": "electron/main.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "node --watch server.js",
+    "electron": "electron .",
+    "dist": "electron-builder"
   },
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "electron": "^41.0.0",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.exilezee.sensor-align-tool",
+    "productName": "Sensor Alignment Tool",
+    "asar": false,
+    "files": [
+      "electron/**/*",
+      "public/**/*",
+      "server.js",
+      "package.json",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "exilezee",
+      "repo": "sensor-align-tool"
+    }
   }
 }
